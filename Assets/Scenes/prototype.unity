@@ -320,7 +320,6 @@ GameObject:
   - component: {fileID: 1140158254}
   - component: {fileID: 1140158253}
   - component: {fileID: 1140158252}
-  - component: {fileID: 1140158251}
   - component: {fileID: 1140158250}
   m_Layer: 0
   m_Name: RouletteCircle
@@ -343,36 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 341703752718542235, guid: 8d5f66f58dafebb49b5b21ae1b77af19, type: 3}
   parentObject: {fileID: 1140158254}
-  capsula: {fileID: 2738802194449402734, guid: 5d5496b512c03a54ca695a8e9e8a7741, type: 3}
-  angleDegrees: 0
-  lineLength: 5
-  lineColor: {r: 1, g: 0, b: 0.7778549, a: 1}
-  vector3: {x: 0, y: 0, z: 0}
   rotationSpeed: 10
-  maxItems: 8
---- !u!136 &1140158251
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1140158249}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1140158252
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -433,7 +403,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 0.03141, z: 3}
+  m_LocalScale: {x: 6, y: 0.03141, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
