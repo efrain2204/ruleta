@@ -37,6 +37,7 @@ public class rouletteObject : MonoBehaviour
             OnDrawGizmoss(grados);
             
         }
+        capsula.transform.parent=parentObject;
     }
 
     // Update is called once per frame
@@ -72,7 +73,7 @@ public class rouletteObject : MonoBehaviour
         GameObject newObject =  Instantiate(prefab, end, Quaternion.identity);
         newObject.transform.parent = capsula;
 
-        Quaternion additionalRotation = Quaternion.Euler(0,45,0); // Rotación adicional de 45 grados en el eje Y
+        Quaternion additionalRotation = Quaternion.Euler(Angle,0,0); // Rotación adicional de 45 grados en el eje Y
         newObject.transform.localRotation *= additionalRotation;
 
         //newObject.transform.rotation = Quaternion.Euler(new Vector3(0, Angle, -90));

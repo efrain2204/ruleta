@@ -309,37 +309,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90.471, z: 0}
---- !u!1 &789985657
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 789985658}
-  m_Layer: 0
-  m_Name: capsula
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &789985658
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 789985657}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1140158254}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1140158249
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 341703752718542235, guid: 8d5f66f58dafebb49b5b21ae1b77af19, type: 3}
   parentObject: {fileID: 1140158254}
-  capsula: {fileID: 789985658}
+  capsula: {fileID: 2738802194449402734, guid: 5d5496b512c03a54ca695a8e9e8a7741, type: 3}
   angleDegrees: 0
   lineLength: 5
   lineColor: {r: 1, g: 0, b: 0.7778549, a: 1}
@@ -466,8 +435,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 0.03141, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 789985658}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1660057539 &9223372036854775807
