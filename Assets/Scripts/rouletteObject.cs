@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class rouletteObject : MonoBehaviour
 {
-    
-    // public float lineLength = 5f;
-    // public Vector3 direction = Vector3.up;
-    // public Color lineColor = Color.white;
+
+    int Degrees = 360;
+    bool B_isFinished = false;
+
+    private LineRenderer lineRenderer;
 
     public GameObject prefab;
     public Transform parentObject;
@@ -21,6 +22,7 @@ public class rouletteObject : MonoBehaviour
     public float rotationSpeed = 100f;
     public int maxItems = 8;
     List<string> items;
+    List<Transform> Positions;
     // Start is called before the first frame update
 
     void Start()
@@ -28,7 +30,15 @@ public class rouletteObject : MonoBehaviour
         items = getNames();
         
 
-
+        int I_size = items.Count;
+        int I_spaceBtw = Degrees/I_size;
+        
+        for(int i = 0; i < items.Count; i++){
+            angleDegrees += I_spaceBtw;
+            OnDrawGizmoss(angleDegrees);
+            
+        }
+        angleDegrees = 0f;
 
 
 
@@ -41,8 +51,11 @@ public class rouletteObject : MonoBehaviour
         
         transform.Rotate(new Vector3(0,1,0),  Time.deltaTime * rotationSpeed);
 
-        if (Input.GetKeyDown("space"))
-            OnDrawGizmoss();
+
+        // if (Input.GetKeyDown("space")){
+        //     Debug.Log($"{Time.deltaTime * rotationSpeed}"+"<----------");
+        //     OnDrawGizmoss();
+        // }
         
 
     }
@@ -59,26 +72,11 @@ public class rouletteObject : MonoBehaviour
         return names;
     }
 
-    // void OnDrawGizmos()
-    // {
-
-    //     Vector3 centerPosition = new Vector3(0,transform.position.y-transform.localScale.y,0);
-
-    //     Debug.Log(transform.localScale);
-    //     Debug.Log(transform.localScale);
-
-
-    //     Vector3 center = new Vector3(0,transform.position.y,0);
-    //     Vector3 end = centerPosition + direction.normalized * lineLength;
-    //     Gizmos.color = lineColor;
-    //     // Gizmos.DrawLine(centerPosition, end);
-    // }
-
      
-    void OnDrawGizmoss()
+    void OnDrawGizmoss(float Angle)
     {
         // Convertir el ángulo de grados a radianes
-        float angleRadians = angleDegrees * Mathf.Deg2Rad;
+        float angleRadians = Angle * Mathf.Deg2Rad;
 
         // Calcular la posición del extremo de la línea
         Vector3 direction = new Vector3(0f,Mathf.Cos(angleRadians),Mathf.Sin(angleRadians));
@@ -86,12 +84,30 @@ public class rouletteObject : MonoBehaviour
 
         GameObject newObject =  Instantiate(prefab, end, Quaternion.identity);
         newObject.transform.parent = parentObject;
-        
+        // Positions.Add(newObject.transform);
+
+        DrawLine(transform.position,end,Color.red);
 
         // Establecer el color de la línea
         Gizmos.color = lineColor;
 
         // Dibujar la línea en la escena
-        Gizmos.DrawLine(transform.position, end);
+        // Gizmos.DrawLine(transform.position, end);
+    }
+
+    void DrawLine(Vector3 start, Vector3 end, Color color)
+    {
+        GameObject myLine = new GameObject();
+        myLine.transform.position = start;
+        myLine.AddComponent<LineRenderer>();
+        LineRenderer lr = myLine.GetComponent<LineRenderer>();
+        // lr.material = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
+        lr.startColor = color;
+        lr.endColor  = color;
+        lr.startWidth = 0.1f;
+        lr.endWidth = 0.1f;
+        lr.SetPosition(0, start);
+        lr.SetPosition(1, end);
+        myLine.transform.parent = parentObject;
     }
 }
