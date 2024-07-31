@@ -12,10 +12,13 @@ public class rouletteObject : MonoBehaviour
 
     public GameObject prefab;
     public Transform parentObject;
+    public Transform capsula;
 
     public float angleDegrees = 0f; // Ángulo en grados
     public float lineLength = 1f;   // Longitud de la línea
     public Color lineColor = Color.red; // Color de la línea
+
+    public Vector3 vector3;
 
 
 
@@ -29,35 +32,19 @@ public class rouletteObject : MonoBehaviour
     {
         items = getNames();
         
-
-        int I_size = items.Count;
-        int I_spaceBtw = Degrees/I_size;
-        
         for(int i = 0; i < items.Count; i++){
-            angleDegrees += I_spaceBtw;
-            OnDrawGizmoss(angleDegrees);
+            int grados = i *(Degrees/items.Count);
+            OnDrawGizmoss(grados);
             
         }
-        angleDegrees = 0f;
-
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 rotation = new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"),0);
+
         
         transform.Rotate(new Vector3(0,1,0),  Time.deltaTime * rotationSpeed);
-
-
-        // if (Input.GetKeyDown("space")){
-        //     Debug.Log($"{Time.deltaTime * rotationSpeed}"+"<----------");
-        //     OnDrawGizmoss();
-        // }
-        
-
     }
 
     List<string> getNames(){
@@ -80,22 +67,23 @@ public class rouletteObject : MonoBehaviour
 
         // Calcular la posición del extremo de la línea
         Vector3 direction = new Vector3(0f,Mathf.Cos(angleRadians),Mathf.Sin(angleRadians));
-        Vector3 end = transform.position + direction * lineLength;
+        Vector3 end = transform.position + direction * (transform.localScale.x/4);
 
         GameObject newObject =  Instantiate(prefab, end, Quaternion.identity);
-        newObject.transform.parent = parentObject;
+        newObject.transform.parent = capsula;
+
+        Quaternion additionalRotation = Quaternion.Euler(0,45,0); // Rotación adicional de 45 grados en el eje Y
+        newObject.transform.localRotation *= additionalRotation;
+
+        //newObject.transform.rotation = Quaternion.Euler(new Vector3(0, Angle, -90));
+        Debug.Log(newObject.transform.rotation);
         // Positions.Add(newObject.transform);
 
-        DrawLine(transform.position,end,Color.red);
+        // DrawLine(transform.position,end,Color.red);
 
-        // Establecer el color de la línea
-        Gizmos.color = lineColor;
-
-        // Dibujar la línea en la escena
-        // Gizmos.DrawLine(transform.position, end);
     }
 
-    void DrawLine(Vector3 start, Vector3 end, Color color)
+    /* void DrawLine(Vector3 start, Vector3 end, Color color)
     {
         GameObject myLine = new GameObject();
         myLine.transform.position = start;
@@ -108,6 +96,10 @@ public class rouletteObject : MonoBehaviour
         lr.endWidth = 0.1f;
         lr.SetPosition(0, start);
         lr.SetPosition(1, end);
+        Debug.Log(start);
+        Debug.Log(end);
+        Debug.Log("-------------->-.");
         myLine.transform.parent = parentObject;
     }
+    */
 }
