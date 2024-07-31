@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e462eb2604e5d474eab0dacf87e4be77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image: {fileID: 1684532460042726433, guid: 9cbd30117a6df814dbb79043f230a2db, type: 3}
   prefab: {fileID: 341703752718542235, guid: 8d5f66f58dafebb49b5b21ae1b77af19, type: 3}
   parentObject: {fileID: 1140158254}
   rotationSpeed: 10
