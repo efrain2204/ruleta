@@ -12,7 +12,7 @@ public class rouletteObject : MonoBehaviour
     public Transform parentObject;
 
     public float rotationSpeed = 100f;
-    List<string> items;
+    List<Image> items;
 
     void Start()
     {
@@ -32,22 +32,28 @@ public class rouletteObject : MonoBehaviour
         transform.Rotate(new Vector3(0,1,0),  Time.deltaTime * rotationSpeed);
     }
 
-    List<string> getNames(){
-        List<string> names;
-        names = new List<string>{
-            "leche",
-            "chocolate",
-            "harina",
-            "huevo",
-            "gelatina",
-            "gelatina",
-            "gelatina",
-            "gelatina",
-            "gelatina",
-            "gelatina",
-        };
-        return names;
+    List<Image> getNames(){
+        List<Image> images =new List<Image>{};
+        return images;
     }
+
+    
+    // List<string> getNames(){
+    //     List<string> names;
+    //     names = new List<string>{
+    //         "leche",
+    //         "chocolate",
+    //         "harina",
+    //         "huevo",
+    //         "gelatina",
+    //         "gelatina",
+    //         "gelatina",
+    //         "gelatina",
+    //         "gelatina",
+    //         "gelatina",
+    //     };
+    //     return names;
+    // }
 
      
     void OnDrawGizmoss(float Angle, float imgPos)
