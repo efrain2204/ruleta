@@ -9,6 +9,8 @@ public class Rotation : MonoBehaviour
 
     public float torqueAmount;
 
+    public Transform objectTransform;
+
     Rigidbody rb;
 
     void Start()
@@ -23,6 +25,7 @@ public class Rotation : MonoBehaviour
 
     void Update()
     {
+
         if(Input.GetMouseButtonUp(0))
         {
             dragging = false;
@@ -33,10 +36,26 @@ public class Rotation : MonoBehaviour
     {
         if(dragging)
         {
-            // float x = Input.GetAxis("Mouse X") * rotationSpeed*Time.fixedDeltaTime;
+
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = Camera.main.WorldToScreenPoint(objectTransform.position).z;
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            Vector3 localPosition = objectTransform.InverseTransformPoint(worldPosition);
+            
+            float x = Input.GetAxis("Mouse X") * rotationSpeed*Time.fixedDeltaTime;
             float y = Input.GetAxis("Mouse Y") * rotationSpeed * Time.fixedDeltaTime;
+            
             Debug.Log(y);
-            // rb.AddTorque(Vector3.down*x);
+            Debug.Log(x);
+
+            Debug.Log(localPosition);
+
+            if(localPosition.y > 0){
+                y = y*-1;
+                x = x*-1;
+            }
+
+            rb.AddTorque(Vector3.down*x);
             rb.AddTorque(Vector3.right*y);
         }    
 
